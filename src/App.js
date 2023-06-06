@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
+import ToDoApp from './ToDoFunctional';
 export class App extends Component{
 
 constructor() {
@@ -23,7 +24,7 @@ onAddTask = () => {
   this.state.value = "";
 }
 
-onChange = (event) => {       // Submit should work on enter key as well
+onChange(event) {       // Submit should work on enter key as well
     this.setState(() => ({
       value: event.target.value})
     )
@@ -32,13 +33,13 @@ onChange = (event) => {       // Submit should work on enter key as well
   }
 
 
-onEnterBtn = (event) => {
+onEnterBtn(event) {
   if(event.key === 'Enter') {
     this.onAddTask();
   }
 }
 
-onStrikeThrough = event => {
+onStrikeThrough (event) {
   if (event.target.style.textDecoration) {
     event.target.style.removeProperty('text-decoration');
   } else {
@@ -57,6 +58,7 @@ render() {
         <input placeholder='Start adding you list' value={this.state.value} onChange={this.onChange}  onKeyUp={this.onEnterBtn}/>
         <p></p>
         <button onClick={this.onAddTask} id='submitBtn'>Submit</button>
+        <ToDoApp/>
       </div>
     );
   }
